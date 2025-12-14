@@ -1,0 +1,189 @@
+{
+  "name": "Reporte Gerencial Banco (GSheets + GPT + Telegram)",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 8 * * *"
+            }
+          ]
+        }
+      },
+      "id": "5d9a9b66-19e4-4109-a5e8-8476f1f45300",
+      "name": "Todos los dias 8am",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        64,
+        32
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1GTP5KwAYK38WKCRluWNyGNvBXWeii1EYhs1WSOTyTBs",
+          "mode": "list",
+          "cachedResultName": "Banco_Reporte_Diario",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1GTP5KwAYK38WKCRluWNyGNvBXWeii1EYhs1WSOTyTBs/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1GTP5KwAYK38WKCRluWNyGNvBXWeii1EYhs1WSOTyTBs/edit#gid=0"
+        },
+        "options": {}
+      },
+      "id": "80772e65-959f-4b79-9465-9b4a066cc79c",
+      "name": "Leer Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        240,
+        64
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "D90eQ6oZrLYLHFQ5",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "chat",
+        "model": "chatgpt-4o-latest",
+        "prompt": {
+          "messages": [
+            {
+              "content": "=Analiza este reporte bancario completo: {{ JSON.stringify($json) }}"
+            }
+          ]
+        },
+        "options": {},
+        "requestOptions": {}
+      },
+      "id": "864e817e-e938-4c5f-b72e-d362d05c85e0",
+      "name": "Analista IA",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [
+        608,
+        32
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "Xa5dwEc3dCk4Yyc8",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "5421736064",
+        "text": "={{ $json.message.content }}    \n\nReporte oficial de Fabio",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "Markdown"
+        }
+      },
+      "id": "a977eed3-2e5d-4a59-bf26-d326839d6ec4",
+      "name": "Enviar a Telegram",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.1,
+      "position": [
+        832,
+        32
+      ],
+      "webhookId": "04c34a9f-c78d-4c19-81c4-f210a4e76022",
+      "credentials": {
+        "telegramApi": {
+          "id": "kE427xzCANNmncje",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        432,
+        64
+      ],
+      "id": "948ff79e-2764-4092-b829-652761e23637",
+      "name": "Aggregate"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Todos los dias 8am": {
+      "main": [
+        [
+          {
+            "node": "Leer Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Leer Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analista IA": {
+      "main": [
+        [
+          {
+            "node": "Enviar a Telegram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enviar a Telegram": {
+      "main": [
+        []
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Analista IA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "31093f5e-76a3-4450-a8ec-2cb19e7b01cd",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "cc8429fae6ee485498e1025364d78b7c48c22030bb5f6b44a0ec4cc95c4afa10"
+  },
+  "id": "YmjwPSNST5LRwHWd",
+  "tags": []
+}
