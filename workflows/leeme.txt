@@ -1,1 +1,13 @@
 Carpeta de Flujos
+El Informe Matutino Inteligente (Resumen Ejecutivo)
+​Objetivo: Entregar un resumen digerido a las 8:00 AM.
+
+Radar de Oportunidades y Fuga (CRM en Tiempo Real)
+​Objetivo: Alertar movimientos grandes al instante.
+
+
+Auditoría de Legajos con IA (Visión Artificial)
+​Objetivo: Leer PDFs/Imágenes y validar requisitos.
+
+
+Estos flujos de trabajos estan pensados para mejorar la operatividad de un banco desde la parte gerencial. 
