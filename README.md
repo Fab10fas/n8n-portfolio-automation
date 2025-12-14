@@ -17,9 +17,9 @@ Los flujos se encuentran en la carpeta `/workflows` y están optimizados para la
 
 | Flujo / Workflow | Descripción Técnica | Tags |
 | :--- | :--- | :--- |
-| **[Nombre: Ej. Clasificador Documental IA]** | Ingesta de PDFs vía Webhook, OCR, extracción de entidades con LLM (GPT-4) y guardado estructurado en SQL. | `IA` `OCR` `SQL` |
-| **[Nombre: Ej. Sync CRM - ERP]** | Sincronización bidireccional de datos con manejo de errores (Error Trigger) y lógica de reintentos automática. | `ETL` `Error Handling` |
-| **[Nombre: Ej. Dashboard Automático]** | Extracción de métricas vía API, transformación con código (Python/JS) y generación de reporte HTML. | `Data` `Python` `Reporting` |
+| Informe Matutino Inteligente (Resumen Ejecutivo) | Ingesta de PDFs vía Webhook, OCR, extracción de entidades con LLM (GPT-4) y guardado estructurado en SQL. | `IA` `OCR` `SQL` |
+| Radar de Oportunidades y Fuga (CRM en Tiempo Real) | Sincronización bidireccional de datos con manejo de errores (Error Trigger) y lógica de reintentos automática. | `ETL` `Error Handling` |
+| Auditoría de Legajos con IA (Visión Artificial) | Extracción de métricas vía API, transformación con código (Python/JS) y generación de reporte HTML. | `Data` `Python` `Reporting` |
 
 ## ⚙️ Mentalidad de Ingeniería & Buenas Prácticas
 
@@ -37,5 +37,5 @@ En estos desarrollos priorizo la estabilidad y la escalabilidad:
 3. Configura tus propias credenciales (Nodos de Credenciales) para los servicios conectados.
 
 ---
-*Desarrollado por [Solohaga Fabio] - 2025*
-*[https://www.linkedin.com/in/fabio-adrian-solohaga-32b8b3246?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app]*
+Desarrollado por Solohaga Fabio - 2025*
+https://www.linkedin.com/in/fabio-adrian-solohaga-32b8b3246?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app
