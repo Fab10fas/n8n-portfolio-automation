@@ -37,5 +37,5 @@ En estos desarrollos priorizo la estabilidad y la escalabilidad:
 3. Configura tus propias credenciales (Nodos de Credenciales) para los servicios conectados.
 
 ---
-Desarrollado por Solohaga Fabio - 2025*
+Desarrollado por Solohaga Fabio - 2025
 https://www.linkedin.com/in/fabio-adrian-solohaga-32b8b3246?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app
